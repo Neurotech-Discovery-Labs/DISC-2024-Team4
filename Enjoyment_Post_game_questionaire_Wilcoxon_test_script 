@@ -1,0 +1,29 @@
+data = [
+    5, 5, 5, 5, 5, 5, 5,
+    4, 4, 4, 4, 4,
+    5, 4, 4, 4,
+    5, 5, 5, 5,
+    4, 4,
+    5, 5, 5, 5, 5, 5, 5, 5,
+    4,
+    5, 5, 5, 5,
+    3,
+    5, 5, 5, 5, 5,
+    4, 4,
+    3,
+    4,
+    5, 5, 5, 5, 5, 5,
+    4, 4,
+    5, 5, 5
+]
+
+from scipy.stats import wilcoxon
+
+# Adjust data by subtracting the hypothesized median (3)
+adjusted_data = [x - 3 for x in data]
+
+# Run Wilcoxon Signed-Rank test against zero (i.e., neutral)
+stat, p_value = wilcoxon(adjusted_data)
+
+print(f"Wilcoxon statistic: {stat}")
+print(f"P-value: {p_value}")
